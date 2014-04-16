@@ -1,7 +1,7 @@
 {
   "name": "dazeus-plugin-food",
-  "version": "0.0.1",
-  "description": "DaZeus plugin for managing managing food parties.",
+  "version": "0.0.2",
+  "description": "DaZeus plugin for managing dining parties.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/dazeus/dazeus-plugin-food",
   "dependencies": {
-    "dazeus": "^0.5.0",
+    "dazeus": "^0.6.0",
     "moment": "^2.6.0",
     "traceur": "0.0.33"
   }
