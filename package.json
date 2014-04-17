@@ -1,6 +1,6 @@
 {
   "name": "dazeus-plugin-food",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "DaZeus plugin for managing dining parties.",
   "main": "index.js",
   "scripts": {
