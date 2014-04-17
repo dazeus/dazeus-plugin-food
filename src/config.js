@@ -32,7 +32,7 @@ export default {
         no_parties: "There is nothing going on.",
         party_removed: "$cook no longer cooks",
         created: "$cook is now cooking $dish",
-        replaced: "Allright, $to is now cooking instead of $from",
+        replaced: "Alright, $to is now cooking instead of $from",
         joined: "$who is now eating at $party",
         already_joined: "$who already eats at $party",
         parted: "$who no longer eats at $party",
