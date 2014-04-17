@@ -9,7 +9,7 @@ export var fix = function (cmd, requester, data) {
         }
     }
 
-    if (cmd.who && cmd.who.toUpperCase() === 'I') {
+    if (cmd.who && (cmd.who.toUpperCase() === 'I' || cmd.who.toLowerCase() === 'me')) {
         cmd.who = requester;
     }
 
