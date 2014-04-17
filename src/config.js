@@ -16,7 +16,7 @@ export default {
         party_history: "$cook was cooking $dish for $people $when (last edited $ago)",
         party_history_with_time: "$cook was cooking $dish for $people $when at $time (last edited $ago)",
         parties: "Use '^ info [party]' to get info about a single party, these are available: $parties",
-        sending_help: "Allright, sending you the help.",
+        sending_help: "Alright, sending you the help.",
         which_party_over: "Which one do you want me to remove? Active: $parties",
         no_parties: "There is nothing going on.",
         party_removed: "$cook no longer cooks",
@@ -27,6 +27,16 @@ export default {
         parted: "$who no longer eats at $party",
         not_joined: "$who does not eat at $party",
         part_multiple_which: "Where would $who no longer like to eat: $parties",
-        join_multiple_which: "There is so much food to choose from: $parties"
+        join_multiple_which: "There is so much food to choose from: $parties",
+        help: [
+            "Creating a new cooking party is done using '^ cook'.",
+            "Other elaborate forms include: '^ cook dish', '^ I cook noms at place and time', '^ John cooks veggies tomorrow at 18:00' and similar",
+            "You can join an existing party using '^ join'. Also allowed: '^ John joins Jane', '^ I eat at Jane' and similar",
+            "You can leave a party using: '^ leave'. Also allowed: '^ John parts Jane', '^ I leave John' and similar",
+            "An existing cooking party is disbanded using '^ clear'. Also allowed: '^ forget Jane', '^ reset John'",
+            "To get a list of the current parties use '^ list', or if you want the details of a single party: '^ list John'",
+            "You can replace the cook for a party using: '^ X cooks instead of Y'",
+            "Finally, this help message is shown using '^ help'"
+        ]
     }
 };

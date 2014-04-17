@@ -29,10 +29,11 @@ export var commandMatcher = function (command) {
             who: undefined === result[1] ? 'I' : result[1].trim(),
             party: undefined === result[3] ? undefined : result[3].trim()
         };
-    } else if (result = /^(?:list|info|about)( (.+))?$/igm.exec(command)) {
+    } else if (result = /^(?:list|info|about)( with (?:hilight|highlight|hl))?( (.+?))?$/igm.exec(command)) {
         return {
             command: 'list',
-            party: undefined === result[2] ? undefined : result[2].trim()
+            party: undefined === result[2] ? undefined : result[2].trim(),
+            highlight: undefined !== result[1]
         };
     } else if (result = /^(clear|reset|forget)( .+)?$/igm.exec(command)) {
         return {

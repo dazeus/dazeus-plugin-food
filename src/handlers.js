@@ -62,7 +62,12 @@ export var list = function (cmd, data, reply) {
 
     if (cmd.party) {
         if (party_exists(cmd.party, data, reply)) {
-            list_party(cmd.party, data[cmd.party], reply, false, true);
+            if (cmd.highlight) {
+                list_party(cmd.party, data[cmd.party], reply, false, true);
+            } else {
+                list_party_no_hl(cmd.party, data[cmd.party], reply, false);
+            }
+
         }
     } else if (parties(data).length === 0) {
         reply(config.messages.no_parties);
@@ -93,12 +98,7 @@ export var clear = function (cmd, data, reply) {
 export var help = function (cmd, data, reply) {
     reply(config.messages.sending_help);
 
-    reply("Creating a new cooking party is done using '^ cook'.", true);
-    reply("Other elaborate forms include: '^ cook dish', '^ I cook noms at place and time', '^ John cooks veggies tomorrow at 18:00' and similar", true);
-    reply("You can join an existing party using '^ join'. Also allowed: '^ John joins Jane', '^ I eat at Jane' and similar", true);
-    reply("You can leave a party using: '^ leave'. Also allowed: '^ John parts Jane', '^ I leave John' and similar", true);
-    reply("An existing cooking party is disbanded using '^ clear'. Also allowed: '^ forget Jane', '^ reset John'", true);
-    reply("To get a list of the current parties use '^ list', or if you want the details of a single party: '^ list John'", true);
-    reply("You can replace the cook for a party using: '^ X cooks instead of Y'", true);
-    reply("Finally, this help message is shown using '^ help'", true);
+    for (var msg of config.messages.help) {
+        reply(msg, true);
+    }
 };
