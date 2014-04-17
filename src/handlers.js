@@ -27,7 +27,7 @@ export var replace = function (cmd, data, reply) {
         data[partyName(cmd.to)] = data[partyName(cmd.from)];
         data[partyName(cmd.to)].name = cmd.to;
         data[partyName(cmd.to)].edited = (new Date()).toISOString();
-        if (partyName(cmd.to)) !== partyName(cmd.from)) {
+        if (partyName(cmd.to) !== partyName(cmd.from)) {
             delete data[partyName(cmd.from)];
         }
         reply(config.messages.replaced.replace('$from', oldname).replace('$to', cmd.to));
