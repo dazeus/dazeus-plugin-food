@@ -1,6 +1,13 @@
 import config from "./config";
 var moment = require('moment');
 
+export var partyName = function (party) {
+    if (typeof party === 'object' && typeof party.party === 'string') {
+        party = party.party;
+    }
+    return party.toLowerCase();
+};
+
 export var parties = function (data) {
     return Object.keys(data);
 };
@@ -9,8 +16,8 @@ export var partyList = function (data) {
     return parties(data).join(', ');
 };
 
-export var party_exists = function (party, data, reply) {
-    if (undefined === data[party]) {
+export var partyExists = function (party, data, reply) {
+    if (undefined === data[partyName(party)]) {
         if (parties(data).length === 0) {
             reply(config.messages.no_such_party_and_no_existing.replace('$party', party));
         } else {
@@ -28,13 +35,14 @@ export var nohl = function (str) {
     return str[0] + config.no_highlight_char + str.slice(1);
 };
 
-export var list_party_no_hl = function (party, details, reply, force_history = false) {
+export var listPartyNoHl = function (details, reply, force_history = false) {
     var clone = JSON.parse(JSON.stringify(details));
     clone.people = [for (p of details.people) nohl(p)];
-    list_party(nohl(party), clone, reply, force_history);
+    clone.name = nohl(details.name);
+    listParty(clone, reply, force_history);
 };
 
-export var list_party = function (party, details, reply, force_history = false, no_hl_on_history = false) {
+export var listParty = function (details, reply, force_history = false, no_hl_on_history = false) {
     var goers, takes_place, history, str;
 
     goers = details.people.join(', ');
@@ -66,7 +74,7 @@ export var list_party = function (party, details, reply, force_history = false, 
     }
 
     if (history && no_hl_on_history) {
-        list_party_no_hl(party, details, reply, force_history);
+        listPartyNoHl(details, reply, force_history);
     } else {
         if (false !== details.time) {
             if (history) {
@@ -85,7 +93,7 @@ export var list_party = function (party, details, reply, force_history = false, 
 
         reply(str
             .replace('$when', takes_place)
-            .replace('$cook', party)
+            .replace('$cook', details.name)
             .replace('$people', goers)
             .replace('$dish', details.dish)
             .replace('$ago', moment(details.edited).fromNow())
