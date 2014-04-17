@@ -14,7 +14,7 @@ export default {
         part: /^(?:let )(.+? )?(leaves?|parts?)( .+)?$/im,
         list: /^(?:list|info|about)( with (?:hilight|highlight|hl)s?)?( (.+?))?$/im,
         clear: /^(clear|reset|forget)( .+)?$/im,
-        help: /^help((?: in) regex(es)?)?$/im
+        help: /^help((?: in)? regex(es)?)?$/im
     },
     messages: {
         unknown_command: "Sorry, I don't understand what you mean, use '%% help' to get help.",
