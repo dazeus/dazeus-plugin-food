@@ -37,6 +37,7 @@ export var join = function (cmd, data, reply) {
             reply(config.messages.already_joined.replace('$party', cmd.party).replace('$who', cmd.who));
         } else {
             data[cmd.party].people.push(cmd.who);
+            data[cmd.party].edited = (new Date()).toISOString();
             reply(config.messages.joined.replace('$party', cmd.party).replace('$who', cmd.who));
         }
     }
@@ -51,6 +52,7 @@ export var part = function (cmd, data, reply) {
             reply(config.messages.not_joined.replace('$party', cmd.party).replace('$who', cmd.who));
         } else {
             data[cmd.party].people.splice(data[cmd.party].people.indexOf(cmd.who), 1);
+            data[cmd.party].edited = (new Date()).toISOString();
             reply(config.messages.parted.replace('$party', cmd.party).replace('$who', cmd.who));
         }
     }
@@ -96,9 +98,16 @@ export var clear = function (cmd, data, reply) {
 
 // show help message
 export var help = function (cmd, data, reply) {
-    reply(config.messages.sending_help);
-
-    for (var msg of config.messages.help) {
-        reply(msg, true);
+    if (cmd.regex) {
+        reply(config.messages.sending_help_regex);
+        for (var regex of Object.keys(config.regexes)) {
+            var r = config.regexes[regex].toString();
+            reply(regex[0].toUpperCase() + regex.slice(1) + ' matched by ' + r, true);
+        }
+    } else {
+        reply(config.messages.sending_help);
+        for (var msg of config.messages.help) {
+            reply(msg, true);
+        }
     }
 };
