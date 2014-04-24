@@ -10,8 +10,8 @@ export default {
     regexes: {
         replace: /^(?:let )?(.+?) cooks? instead of (.+)$/im,
         cook: /^(?:let )?(.+? )?cooks?( .+?)?( tomorrow)?( at (.+?)( tomorrow)?)?$/im,
-        join: /^(?:let )(.+? )?(?:joins?|eats?( at)?)( .+)?$/im,
-        part: /^(?:let )(.+? )?(leaves?|parts?)( .+)?$/im,
+        join: /^(?:let )?(.+? )?(?:joins?|eats?( at)?)( .+)?$/im,
+        part: /^(?:let )?(.+? )?(leaves?|parts?)( .+)?$/im,
         list: /^(?:list|info|about)( with (?:hilight|highlight|hl)s?)?( (.+?))?$/im,
         clear: /^(clear|reset|forget)( .+)?$/im,
         help: /^help((?: in)? regex(es)?)?$/im
