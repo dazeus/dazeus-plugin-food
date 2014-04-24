@@ -13,7 +13,15 @@ export var parties = function (data) {
 };
 
 export var partyList = function (data) {
-    return parties(data).join(', ');
+    return listify(parties(data));
+};
+
+export var listify = function (arr) {
+    if (arr.length >= 2) {
+        return arr.slice(0, -1).join(', ') + ' and ' + arr[arr.length - 1];
+    } else {
+        return arr.join(', ');
+    }
 };
 
 export var partyExists = function (party, data, reply) {
@@ -45,7 +53,7 @@ export var listPartyNoHl = function (details, reply, force_history = false) {
 export var listParty = function (details, reply, force_history = false, no_hl_on_history = false) {
     var goers, takes_place, history, str;
 
-    goers = details.people.join(', ');
+    goers = listify(details.people);
     if (goers.length === 0) {
         goers = 'nobody';
     }
