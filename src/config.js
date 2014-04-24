@@ -17,7 +17,7 @@ export default {
         help: /^help((?: in)? regex(es)?)?$/im
     },
     messages: {
-        unknown_command: "Sorry, I don't understand what you mean, use '%% help' to get help.",
+        unknown_command: "Sorry, I don't understand what you mean. Use '%% help' to get help.",
         undefined_handler: "Whoops, a handler for this command was not defined.",
         no_such_party: "There is no cook $party, you can pick one of these: $parties",
         no_such_party_and_no_existing: "There is no cook $party, create a new event using '%% I cook noms'",
